@@ -57,8 +57,8 @@ app.use(function(err, req, res, next) {
     });
 });
 
-// util.openBrowser();
+util.openBrowser();
 
-console.log('Server running at http://localhost:3000');
+console.log('Server running at http://localhost:3000. 如果浏览器启动失败，请手动访问.');
 
 module.exports = app;
