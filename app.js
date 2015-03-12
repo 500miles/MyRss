@@ -57,7 +57,7 @@ app.use(function(err, req, res, next) {
     });
 });
 
-util.openBrowser();
+// util.openBrowser();
 
 console.log('Server running at http://localhost:3000');
 

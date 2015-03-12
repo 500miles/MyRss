@@ -16,18 +16,20 @@ var fetchUrl = function(data, callback) {
 				"cont": []
 			};
 
-			$(data.sizzle).each(function(index, el) {
-				var $el = $(el);
+			data.sizzle.forEach(function(item) {
+				$(item).each(function(index, el) {
+					var $el = $(el);
 
-				var text = $el.html();
-				var href = url.resolve(data.url, $el.attr('href'));
+					var text = $el.html();
+					var href = url.resolve(data.url, $el.attr('href'));
 
-				result.cont.push({
-					"title": text,
-					"url": href
+					result.cont.push({
+						"title": text,
+						"url": href
+					});
 				});
 			});
-
+			
 			callback(null, result);
 		});
 }

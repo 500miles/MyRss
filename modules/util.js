@@ -55,8 +55,6 @@ function findDataByName(fileData, value) {
 }
 
 function filter(fileData, conditions) {
-	console.log(fileData);
-
 	for (var attr in conditions) {
 		fileData = fileData.filter(function(item) {
 			return item[attr] == conditions[attr];

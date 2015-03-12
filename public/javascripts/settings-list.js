@@ -18,7 +18,7 @@
 				}
 			})
 			.done(function(data) {
-				if (data.status == '1') {
+				if (data.code == '1') {
 					$(that).parents('tr').remove();
 				} else {
 					alert(data.message);

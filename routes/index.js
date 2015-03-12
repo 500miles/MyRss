@@ -14,6 +14,11 @@ router.get('/', function(req, res) {
 				"status": "on"
 			});
 
+			fileData = fileData.map(function(item) {
+				item.sizzle = item.sizzle.split(',');
+				return item;
+			});
+
 			async.mapLimit(fileData, 10, function(data, callback) {
 				fetchUrl(data, callback);
 			}, function(err, result) {
@@ -37,6 +42,11 @@ router.get('/article', function(req, res) {
 				"status": "on"
 			});
 
+			fileData = fileData.map(function(item) {
+				item.sizzle = item.sizzle.split(',');
+				return item;
+			});
+
 			async.mapLimit(fileData, 10, function(data, callback) {
 				fetchUrl(data, callback);
 			}, function(err, result) {
@@ -54,7 +64,7 @@ router.get('/article', function(req, res) {
 router.get('/settings', function(req, res) {
 	util.readJson(function(fileData) {
 
-		if (!fileData) {
+		if (!fileData || !fileData.length ) {
 			res.redirect('/settings/add');
 			return;
 		}
