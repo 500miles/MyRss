@@ -1,0 +1,43 @@
+extends layout
+
+block content
+  .container
+    .page-header(style='padding-top: 0;')
+      h1 Hello, World.
+    .row
+      .col-md-9
+        .settings-box
+          if (status == 'success')
+            .alert.alert-success.alert-dismissible(role='alert')
+              button.close(type='button', data-dismiss='alert', aria-label='Close')
+                span(aria-hidden='true') &times;
+              strong Success
+          else if (status == 'fail')
+            .alert.alert-danger.alert-dismissible(role='alert')
+              button.close(type='button', data-dismiss='alert', aria-label='Close')
+                span(aria-hidden='true') &times;
+              strong Fail
+          form.form-horizontal(action='/setting/setStatus', method='post', role='form')
+            each item in rss
+              .form-group
+                label.col-sm-4.control-label #{item.title}
+                .col-sm-6
+                  label
+                    input(type='radio', name='status[#{item.name.toLowerCase()}]', value='on', checked=(item.status == 'on' ? true : false))
+                    | 开启
+                  label
+                    input(type='radio', name='status[#{item.name.toLowerCase()}]', value='off' checked=(item.status == 'off' ? true : false))
+                    | 关闭
+            .form-group
+              .col-sm-offset-4.col-sm-10
+                button.btn.btn-primary(type='submit') Submit
+
+      .col-md-3.bs-docs-sidebar
+        ul#nav-box.nav.nav-pills.nav-stacked.affix(role='tablist')
+          li(role='presentation', class=(navActive == 'settings' ? 'active' : null))
+            a(href='/settings') 资源设置
+          li(role='presentation', class=(navActive == 'add' ? 'active' : null))
+            a(href='/settings/add') 资源添加
+          li(role='presentation', class=(navActive == 'list' ? 'active' : null))
+            a(href='/settings/list') 资源列表
+

@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  .container
+      .page-header(style="padding-top: 0")
+        h1 Hello, World.
+      .row
+        .col-md-9
+          each item in data
+            .bs-docs-section
+              h1.page-header(id='#{item.name.toLowerCase()}-cont') #{item.title}
+              ul.list-group
+                each cont in item.cont
+                  li.list-group-item
+                    a(href='#{cont.url}', target='_blank') #{cont.title}
+        .col-md-3.bs-docs-sidebar
+          ul#nav-box.nav.nav-pills.nav-stacked.affix(role='tablist')
+            each item,index in data
+              li(class=(index == '0' ? 'active' : null), role='presentation')
+                a(href='\##{item.name.toLowerCase()}-cont') #{item.title}
+
+block footer
+  script(type='text/javascript', src='/javascripts/nav.js')

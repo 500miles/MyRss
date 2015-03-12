@@ -1,0 +1,40 @@
+extends layout
+
+block content
+  .container
+    .page-header(style='padding-top: 0;')
+      h1 Hello, World.
+    .row
+      .col-md-9
+        .settings-box
+          table.table.table-bordered.table-hover
+            thead
+              tr
+                th Name
+                th Url
+                //- th work Status
+                th sizzle
+                th update
+                th delete
+            tbody
+              each item in rss
+                unless item.status == 'off'
+                  tr(data-name='#{item.name.toLowerCase()}')
+                    td #{item.title}
+                    td: a(href='#{item.url}', target='_blank') #{item.url}
+                    td #{item.sizzle}
+                    td: a.btn.btn-primary(href='/settings/update/#{item.name.toLowerCase()}') update
+                    td: button.btn.btn-danger.del-btn delete
+
+      .col-md-3.bs-docs-sidebar
+        ul#nav-box.nav.nav-pills.nav-stacked.affix(role='tablist')
+          li(role='presentation', class=(navActive == 'settings' ? 'active' : null))
+            a(href='/settings') 资源设置
+          li(role='presentation', class=(navActive == 'add' ? 'active' : null))
+            a(href='/settings/add') 资源添加
+          li(role='presentation', class=(navActive == 'list' ? 'active' : null))
+            a(href='/settings/list') 资源列表
+
+block footer
+  script(type='text/javascript', src='/javascripts/settings-list.js')
+

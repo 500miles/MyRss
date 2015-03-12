@@ -1,0 +1,38 @@
+body {
+	padding-top: 70px;
+}
+
+@media (min-width: 992px) {
+
+    .bs-docs-sidebar.affix {
+        width: 213px
+    }
+
+    .bs-docs-sidebar.affix {
+        position: fixed;
+        top: 20px
+    }
+}
+@media (min-width: 1200px) {
+
+    .bs-docs-sidebar .affix {
+        width:263px
+    }
+}
+
+.page-header {
+    margin-top: 0;
+    padding-top: 60px;
+}
+
+/* settings */
+input[type=radio] {
+    margin-right: 5px;
+}
+.form-group .col-sm-6 {
+    position: relative;
+    top: 8px;
+}
+.form-group .col-sm-6 label {
+    margin-right: 10px;
+}
